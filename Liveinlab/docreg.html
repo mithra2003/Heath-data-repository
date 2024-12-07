@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(to bottom, #f6f0df 82%, #ffffff 30%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .Welcome{
+            font-size: 30px;
+            margin-bottom: 300px;
+            margin-left: 60px;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            width:700px;
+            height: 630px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            text-align: center;
+            border: 3px solid #3ebe2a;
+            text-align: center;
+            margin-left: 40px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 50%;
+            padding: 10px;
+            background-color: #3ebe2a;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #009b08;
+        }
+        .image-container {
+            margin-left: -120px;
+        }
+        .image-container img {
+            width: 700px;
+            margin-top: 70px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="Welcome">
+        <h1>Register with <br><span style="color: #3ebe2a;">MedRepo!</span></h1>
+        <p style="font-size: 17px;line-height: 25px;">Access patient's comprehensive medical history, detailed lab reports, and current prescriptions securely<br> and conveniently from any location, at any time.</p>
+    </div>
+    <div class="login-container">
+        <h2><span style="font-size: 28px;">🩺</span>Doctor/Hospital Registration</h2>
+        <form onsubmit="return validateForm()" action="doclogin.html">
+            <input type="text" name="name" placeholder="Name" required><br><br>
+            <input type="text" name="id" placeholder="Government Registration ID" required><br><br>
+            <input type="text" name="hosname" placeholder="Hospital Name" required><br><br>
+            <input type="text" name="loc" placeholder="Location" required><br><br>
+            <input type="password" name="password" placeholder="Password" minlength="8" required><br><br>
+            <input type="password" name="confirm-password"placeholder="Confirm-Password" minlength="8" required>
+            <br><br><br>
+            <button type="submit">Register</button><br><br><br>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="/images/doc-login image.png" alt="Login Image">
+    </div>
+    <script>
+        // Client-side password validation and matching
+        function validateForm() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm-password").value;
+
+            if (password.length < 8) {
+                alert("Password must be at least 8 characters long.");
+                return false;
+            }
+
+            if (!/[A-Z]/.test(password)) {
+                alert("Password must contain at least one uppercase letter.");
+                return false;
+            }
+
+            if (!/[\W_]/.test(password)) {
+                alert("Password must contain at least one special character.");
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+        }
+
+
+        // validating //
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('regUsername').value;
+    const password = document.getElementById('regPassword').value;
+
+    // Save the credentials in localStorage (or sessionStorage)
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+
+    alert('Registration successful!');
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const loginUsername = document.getElementById('loginUsername').value;
+    const loginPassword = document.getElementById('loginPassword').value;
+
+    // Retrieve the saved credentials
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+
+    if (loginUsername === savedUsername && loginPassword === savedPassword) {
+        alert('Login successful!');
+    } else {
+        alert('Invalid credentials!');
+    }
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:linear-gradient(to bottom, #f6f0df 87%, #ffffff 30%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .Welcome{
+            font-size: 30px;
+            margin-bottom: 500px;
+            margin-left: 35px;
+        }
+        
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            width:400px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 200px;
+            text-align: center;
+            border: 3px solid #3ebe2a;
+           height: 350px;
+            text-align: center;
+            margin-left: -40px;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+        .login-container input {
+            width: 80%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            width: 50%;
+            padding: 10px;
+            background-color: #3ebe2a;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #009b08;
+        }
+        .image-container {
+            margin-left: -150px;
+        }
+        .image-container img {
+            width: 700px;
+            margin-top: 150px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="Welcome">
+        <h1>Welcome To <br><span style="color: #3ebe2a;">MedRepo!</span></h1>
+    </div>
+    <div class="login-container">
+        <h2><span style="font-size: 28px;">🩺</span>Doctor Login</h2>
+        <form action="doclogin_info.html">
+            <input type="text" name="aadhaar" placeholder="Hospital ID" required><br><br>
+            <input type="password" name="password" placeholder="Password" required><br><br><br>
+            <button type="submit">Login</button><br><br><br>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="/images/doc-login image.png" alt="Login Image">
+    </div>
+<script>
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = document.getElementById('regUsername').value;
+    const password = document.getElementById('regPassword').value;
+
+    // Save the credentials in localStorage (or sessionStorage)
+    localStorage.setItem('username', username);
+    localStorage.setItem('password', password);
+
+    alert('Registration successful!');
+});
+
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const loginUsername = document.getElementById('loginUsername').value;
+    const loginPassword = document.getElementById('loginPassword').value;
+
+    // Retrieve the saved credentials
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+
+    if (loginUsername === savedUsername && loginPassword === savedPassword) {
+        alert('Login successful!');
+    } else {
+        alert('Invalid credentials!');
+    }
+});
+
+</script>
+</body>
+</html>

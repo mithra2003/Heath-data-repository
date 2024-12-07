@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css"> 
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+</head>
+<body>
+    <header>
+       
+        <nav class="nav-container">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li class="dropdown1">
+                    <a href="#" class="dropbtn1">Login</a>
+                    <div class="dropdown-content1">
+                        <a href="doclogin.html">Doctor</a>
+                        <a href="login.html">Patient</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Register</a>
+                    <div class="dropdown-content">
+                        <a href="docreg.html">Doctor</a>
+                        <a href="patreg.html">Patient</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="hero-section">
+            <div class="hero-content">
+                <h2>Med<span style="color: #1cc502;">Repo</span></h2>
+                <h1>SMART HEALTH <span id="auto-type"></span></h1>
+                <p>"Seamlessly manage and access patient's records with smart data repository"
+                <br>Effortlessly access and organize medical records with advanced data storage.</p>
+                <button>View Services</button>
+            </div>
+        </div>
+    <br><br><br>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> 
+    <script> 
+        var typed=new Typed("#auto-type",{ 
+            strings:["DATA REPOSITORY"], 
+            typeSpeed:110, 
+            backSpeed:40, 
+            loop:true 
+        });
+    </script>
+    <div class="about-us">
+        <img src="/images/about us image.png">
+        <div class="about-us-text">
+            
+            <p><span style="font-size: 40px;"><b>At </b></span><span style="color: #1cc502;font-size: 30px;"><b>MedRepo</b></span>, we are dedicated to revolutionizing the way medical<br> records are stored and managed. Our web-based portal is designed to provide a <br>secure, efficient, and user-friendly platform for storing and managing patients'<br> medical records, including allergy information and lab reports. Our mission is <br>to enable doctors to access a patient's comprehensive treatment history effortlessly, ensuring informed decision-making and improved patient care.</p>
+        </div>
+    </div><br><br>
+
+
+<div class="services"><h1>Services we offer...</h1></div>
+    <div class="boxes-container">
+        <div class="green-box">
+            <h3>Comprehensive Medical Records Management:</h3>
+            <p>Store and manage the patients' medical records, including allergy information, lab reports, and treatment history up-to-date.</p>
+        </div>
+        <div class="green-box">
+            <h3>Secure Data Storage:</h3>
+            <p>Ensure the privacy and security of medical records with our robust security measures.Benefit from advanced encryption technologies to safeguard sensitive patient information.
+            </p>
+        </div>
+        <div class="green-box">
+            <h3>Easy Access for Healthcare Providers:</h3>
+            <p> Enable doctors to access patients' treatment histories and make informed decisions efficiently.Streamline workflows with our user-friendly interface for healthcare professionals.</p>
+        </div>
+        <div class="green-box">
+            <h3>Regular Updates:</h3>
+            <p>Keep records updated with each patient visit, ensuring accurate and up-to-date information storage.Automate all the notifications to alert healthcare providers of any changes in their patient records.</p>
+        </div>
+    </div><br><br><br>
+
+<div class="enquiry">
+    <h1>We look forward to assist you!</h1>
+    <p style="font-size: 20px;">Please reach us to get in touch for any inquiries or further information</p>
+</div>
+    <div class="contact-form">
+        <form action="#" method="post">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</main><br><br>
+
+
+
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-top">
+            <div class="footer-description">
+                <p>
+                    We specialize in the secure storage and management of comprehensive patient health records, including lab reports, medical prescriptions, allergy details, and more. Our advanced infrastructure ensures data accessibility, confidentiality, and integrity, empowering healthcare providers to deliver precise diagnostics and personalized treatments. By leveraging cutting-edge technology, we enhance efficiency and patient care, setting new standards in medical data repository solutions.
+                </p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Enquiry</a></li>
+                        <li><a href="#">Learn More</a></li><br><br>
+                        <li style="text-decoration: underline;"><a href="mailto:medrepo@gmail.com">medrepo@gmail.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-company">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Copyright MedRepo. All Rights Reserved | Designed by MedRepo Team</p>
+            <div class="footer-terms">
+                <a href="#">Terms of Service | </a>  
+                <a href="#">Privacy Policy | </a> 
+                <a href="#">Support </a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Information</title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 150px;
+}
+
+.container {
+    height: 550px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #fff;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+.patient-info, .medical-history {
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 35px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #dcd9d9;
+    color: rgb(7, 7, 7);
+}
+
+button {
+    margin-left: 480px;
+    margin-top: 40px;
+    display: block;
+    width: 200px;
+    padding: 10px;
+    background-color: #1cc502;;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #080808;
+}
+
+#uploadForm {
+    text-align: center;
+    margin-top: 30px;
+}
+
+    </style>
+    <div class="container">
+        <div class="patient-info">
+            <h2>Patient Information</h2>
+            <p><strong>Name:</strong> John Doe</p>
+            <p><strong>Age:</strong> 35</p>
+            <p><strong>Gender:</strong> Male</p>
+            <p><strong>Mobile Number:</strong> 9876768999</p>
+            <p><strong>Email:</strong> john@gmail.com</p>
+        </div>
+        <div class="medical-history">
+            <h2>Medical History</h2>
+            <table id="medical-history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Hospital</th>
+                        <th>Prescription (Report)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Entries will be dynamically added here -->
+                </tbody>
+            </table>
+            <button onclick="document.getElementById('uploadForm').style.display='block'">Upload New Prescription</button>
+        </div>
+        <div id="uploadForm" style="display:none;">
+            <input type="file" id="fileInput">
+            <button onclick="uploadFile()">Upload</button>
+        </div>
+    </div>
+
+
+    <script>
+        // Function to display uploaded files
+function displayFiles() {
+    const historyTable = document.getElementById('medical-history-table').getElementsByTagName('tbody')[0];
+    historyTable.innerHTML = ''; // Clear existing rows
+
+    const files = JSON.parse(localStorage.getItem('medicalFiles') || '[]');
+
+    files.forEach((file, index) => {
+        const row = historyTable.insertRow();
+        row.insertCell(0).innerText = file.date;
+        row.insertCell(1).innerText = file.hospital;
+        const linkCell = row.insertCell(2);
+        const link = document.createElement('a');
+        link.href = file.url;
+        link.target = '_blank';
+        link.innerText = 'View Document';
+        linkCell.appendChild(link);
+        const actionCell = row.insertCell(3);
+        const deleteButton = document.createElement('button');
+        deleteButton.innerText = 'Delete';
+        deleteButton.onclick = () => deleteFile(index);
+        actionCell.appendChild(deleteButton);
+    });
+}
+
+// Function to handle file upload
+function uploadFile() {
+    const fileInput = document.getElementById('fileInput');
+    if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            const fileDataUrl = e.target.result;
+
+            const newFile = {
+                date: new Date().toISOString().split('T')[0],
+                hospital: 'Isabel',
+                url: fileDataUrl,
+            };
+
+            const files = JSON.parse(localStorage.getItem('medicalFiles') || '[]');
+            files.push(newFile);
+            localStorage.setItem('medicalFiles', JSON.stringify(files));
+
+            displayFiles();
+            document.getElementById('uploadForm').style.display = 'none';
+            fileInput.value = ''; // Clear the input
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+function deleteFile(index) {
+    const files = JSON.parse(localStorage.getItem('medicalFiles') || '[]');
+    files.splice(index, 1);
+    localStorage.setItem('medicalFiles', JSON.stringify(files));
+    displayFiles();
+}
+
+// Display files on page load
+window.onload = displayFiles;
+
+    </script>
+</body>
+</html>
